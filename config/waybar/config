@@ -1,0 +1,64 @@
+{
+    "height": 20,
+    "modules-left": ["sway/workspaces"],
+    "modules-right": ["network", "wireplumber", "backlight", "sway/language", "battery", "clock"],
+    "battery": {
+        "tooltip": false,
+        "format": " {capacity}% *",
+        "format-charging": " {capacity}% +",
+        "format-discharging": " {capacity}% -",
+        "interval": 1,
+        "states": {
+            "low" : 40,
+            "normal": 79,
+            "high": 100,
+        },    
+    },
+    "clock": {
+        "tooltip": false,
+        "format": " {:%H:%M %a %d/%m}",
+        "interval": 1,
+    },
+    "sway/language": {
+        "tooltip": false,
+        "format": " {short}",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    },
+    "wireplumber": {
+        "tooltip": false,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "flatpak run com.saivert.pwvucontrol",
+        "format": " {volume}%",
+        "format-muted": " 0%",
+        "max-volume": 150,
+    },
+    "backlight": {
+        "tooltip": false,
+        "format": " {percent}%",
+    },
+    "network": {
+        "interval": 1,
+
+        "format-wifi": " Wireless",
+        "format-ethernet": " Wired",
+        "format-disconnected": " Disconnected",
+        "format": " Off",
+
+        "tooltip-format-wifi": "{essid}\n\n{signalStrength}%\n{frequency} GHz\n\nDown: {bandwidthDownBytes}\nUp: {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "Down: {bandwidthDownBits}\nUp: {bandwidthUpBits}",
+
+        "on-click": "~/.scripts/toggle_network",
+    },
+    "bluetooth": {
+        "format-disabled": " Off",
+        "format-off": " Off",
+        "format-on": " Disconnected",
+        "format-connected": " Connected ({num_connections})",
+        
+        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        
+        "on-click": "~/.scripts/toggle_bluetooth",
+        "on-click-right": "blueman-manager",
+    }
+}

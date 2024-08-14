@@ -1,0 +1,141 @@
+# Modifier keys
+set $mod Mod4
+
+set $left left
+set $down down
+set $up up
+set $right right
+
+# Background
+output * bg #000000 solid_color
+
+# Display
+output HDMI-A-1 {
+    resolution 3840x2160
+    scale 1.40
+    position 0 0
+}
+
+output eDP-1 {
+    position 3840,0
+}
+
+# Input
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+input type:keyboard {
+    xkb_layout si,us
+    xkb_numlock enabled
+}
+
+# Keyboard layout
+bindsym $mod+space exec "swaymsg input type:keyboard xkb_switch_layout next"
+
+# Window Manipulation
+bindsym $mod+q kill
+floating_modifier $mod normal
+
+# Reloading & Exit
+bindsym $mod+r reload
+bindsym $mod+Shift+r exec swaymsg exit
+
+# Moving focues
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Moving Windows
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Next Tile
+bindsym $mod+h splith
+bindsym $mod+v splitv
+
+# Modes
+bindsym $mod+f fullscreen
+bindsym $mod+t floating toggle
+bindsym $mod+Shift+t focus mode_toggle
+
+# Resize
+bindsym $mod+control+$left resize shrink width 10px
+bindsym $mod+control+$down resize shrink height 10px
+bindsym $mod+control+$up resize grow height 10px
+bindsym $mod+control+$right resize grow width 10px
+
+# Borders & gaps
+default_border pixel 1
+default_floating_border pixel 1
+
+# Volume
+set $volume_change_step 3
+set $volume_limit 1.5
+
+bindsym $mod+a exec wpctl set-volume @DEFAULT_AUDIO_SINK@ '$volume_change_step'%-
+bindsym $mod+s exec wpctl set-volume -l $volume_limit @DEFAULT_AUDIO_SINK@ '$volume_change_step'%+
+bindsym $mod+m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+# Brightness
+set $brightness_change_step 3
+
+bindsym $mod+w exec light -U $brightness_change_step
+bindsym $mod+e exec light -A $brightness_change_step
+
+# Apps
+bindsym $mod+y exec thunar
+bindsym $mod+x exec flatpak run com.brave.Browser
+bindsym $mod+g exec flatpak run com.vscodium.codium
+bindsym $mod+c exec copyq toggle
+bindsym $mod+Return exec alacritty
+bindsym $mod+d exec rofi -show drun -drun-display-format {name}
+
+# Power
+bindsym $mod+alt+p exec poweroff
+bindsym $mod+alt+o exec reboot
+bindsym $mod+alt+u exec systemctl suspend
+
+# Network
+bindsym $mod+n exec ~/.scripts/toggle_network
+
+# Built-in display
+bindsym $mod+b exec swaymsg output eDP-1 power toggle
+
+# Colors
+set $clear "#ffffff00"
+#                         border    background   text      indicator   child_border
+client.focused            #a5a5a5   #285577      #ffffff   #a5a5a5     #a5a5a5
+client.focused_inactive   #686868   #285577      #ffffff   #686868     #686868
+client.unfocused          #686868   #222222      #888888   #686868     #686868
+
+# Startup
+exec swayidle
+exec copyq
+bar swaybar_command waybar
