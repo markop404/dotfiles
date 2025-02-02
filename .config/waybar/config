@@ -1,0 +1,52 @@
+{
+    "position": "top",
+    "modules-left": ["sway/workspaces"],
+    "modules-right": [
+        "network",
+        "wireplumber",
+        "backlight",
+        "idle_inhibitor",
+        "battery",
+        "clock",
+    ],
+    "battery": {
+        "tooltip": false,
+        "interval": 1,
+        "format": "󰁾  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "states": {
+            "low" : 15,
+        },    
+    },
+    "clock": {
+        "tooltip": false,
+        "interval": 1,
+        "format": "  {:%H:%M  %a %b %e}",
+    },
+    "wireplumber": {
+        "tooltip": false,
+        "max-volume": 150,
+        "format": "  {volume}%",
+        "format-muted": "  {volume}%",
+    },
+    "backlight": {
+        "tooltip": false,
+        "format": "󰃠  {percent}%",
+    },
+    "network": {
+        "tooltip": false,
+        "interval": 1,
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  Wired",
+        "format-disconnected": "󰛵  Disconnected",
+        "format": "󰲛  Off",
+    },
+    "idle_inhibitor": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰛊  Active",
+            "deactivated": "󰾫  Inactive",
+        }
+    },
+}

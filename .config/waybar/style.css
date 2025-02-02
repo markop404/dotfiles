@@ -1,0 +1,48 @@
+* {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    transition-property: none;
+    border-radius: 0;
+    border: none;
+    text-shadow: none;
+    box-shadow: none;
+    opacity: 1;
+}
+
+#waybar {
+    background: #202225;
+}
+
+button {
+    padding: 0 6px;
+}
+
+button:hover {
+    background: inherit;
+}
+
+button.focused {
+    background: #e35c19;
+    font-weight: bold;
+}
+
+#network,
+#bluetooth,
+#clock,
+#language,
+#battery,
+#power-profiles-daemon,
+#idle_inhibitor,
+#backlight,
+#wireplumber {
+    padding: 0 20px;
+}
+
+#clock {
+    margin-right: 20px;
+}
+
+#battery.low:not(.charging) {
+    background: #ff0000;
+}

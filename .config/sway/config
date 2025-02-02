@@ -1,0 +1,147 @@
+# For XDG environment variables
+include /etc/sway/config.d/*
+
+# Modifier keys
+set $mod Mod4
+
+set $left left
+set $down down
+set $up up
+set $right right
+
+# Displays
+output HDMI-A-1 {
+    mode 3840x2160@60Hz
+    pos 0 0
+    scale 1.5
+}
+
+# Inputs
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    scroll_factor 0.2
+}
+input type:keyboard {
+    xkb_layout si
+    xkb_numlock enabled
+}
+
+# Window Manipulation
+bindsym $mod+q kill
+floating_modifier $mod normal
+
+# Reloading & Exiting
+bindsym $mod+r reload
+bindsym $mod+Shift+r exec swaymsg exit
+
+# Moving focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Moving Windows
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Switch Workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move window to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Move and switch to workspace
+bindsym $mod+Control+1 move container to workspace number 1, workspace number 1
+bindsym $mod+Control+2 move container to workspace number 2, workspace number 2
+bindsym $mod+Control+3 move container to workspace number 3, workspace number 3
+bindsym $mod+Control+4 move container to workspace number 4, workspace number 4
+bindsym $mod+Control+5 move container to workspace number 5, workspace number 5
+bindsym $mod+Control+6 move container to workspace number 6, workspace number 6
+bindsym $mod+Control+7 move container to workspace number 7, workspace number 7
+bindsym $mod+Control+8 move container to workspace number 8, workspace number 8
+bindsym $mod+Control+9 move container to workspace number 9, workspace number 9
+bindsym $mod+Control+0 move container to workspace number 10, workspace number 10
+
+# Next Tile
+bindsym $mod+h splith
+bindsym $mod+v splitv
+
+# Modes
+bindsym $mod+f fullscreen
+bindsym $mod+t floating toggle
+bindsym $mod+Shift+t focus mode_toggle
+
+# Resize
+bindsym $mod+control+$left resize shrink width 30px
+bindsym $mod+control+$down resize shrink height 30px
+bindsym $mod+control+$up resize grow height 30px
+bindsym $mod+control+$right resize grow width 30px
+
+# Borders & gaps
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 6
+
+# Volume
+set $volume_change_step 3
+set $volume_limit 1.5
+
+bindsym $mod+Control+s exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym $mod+Shift+s exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0
+bindsym $mod+Shift+d exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 100%
+bindsym $mod+s exec wpctl set-volume @DEFAULT_AUDIO_SINK@ '$volume_change_step'%-
+bindsym $mod+d exec wpctl set-volume -l $volume_limit @DEFAULT_AUDIO_SINK@ '$volume_change_step'%+
+
+# Brightness
+set $brightness_change_step 3
+
+bindsym $mod+Shift+w exec brightnessctl set 0
+bindsym $mod+Shift+e exec brightnessctl set 100%
+bindsym $mod+w exec brightnessctl set '$brightness_change_step'%-
+bindsym $mod+e exec brightnessctl set '$brightness_change_step'%+
+
+# Apps
+bindsym $mod+y exec thunar
+bindsym $mod+x exec flatpak run org.mozilla.firefox
+bindsym $mod+g exec flatpak run com.vscodium.codium
+bindsym $mod+Return exec ghostty
+bindsym $mod+a exec fuzzel
+
+# Power
+bindsym $mod+p exec poweroff
+bindsym $mod+Shift+p exec reboot
+bindsym $mod+o exec systemctl suspend
+
+# Built-in display
+bindsym $mod+b exec swaymsg output eDP-1 power toggle
+
+# Colors
+#                           border      background     text        indicator     child_border
+client.focused            #e35c19   #285577      #ffffff   #e35c19     #e35c19
+client.focused_inactive   #e35c19   #285577      #ffffff   #e35c19     #e35c19
+client.unfocused          #686868   #222222      #888888   #686868     #686868
+
+# Startup
+exec swayidle
+bar swaybar_command waybar
