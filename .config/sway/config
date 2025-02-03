@@ -117,8 +117,7 @@ font Inter Regular 10
 default_border pixel 2
 default_floating_border normal 2
 titlebar_border_thickness 2
-titlebar_padding 8 6
-
+titlebar_padding 7 6
 
 # Volume
 set $volume_change_step 3
