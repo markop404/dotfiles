@@ -1,7 +1,0 @@
-window-decoration = none
-gtk-adwaita = false
-resize-overlay = never
-confirm-close-surface = false
-copy-on-select = clipboard
-theme = zenwritten_dark
-font-family = Inter Variable Thin
