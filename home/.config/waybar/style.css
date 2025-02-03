@@ -1,5 +1,5 @@
 * {
-    font-family: Inter, sans-serif;
+    font-family: Inter;
     font-size: 14px;
     color: #ffffff;
     transition-property: none;
@@ -32,7 +32,6 @@ button.focused {
 #clock,
 #language,
 #battery,
-#power-profiles-daemon,
 #idle_inhibitor,
 #backlight,
 #wireplumber {
