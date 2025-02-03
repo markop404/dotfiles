@@ -1,4 +1,6 @@
-# For XDG environment variables
+# Startup
+exec swayidle
+bar swaybar_command waybar
 include /etc/sway/config.d/*
 
 # Modifier keys
@@ -59,6 +61,14 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
+
+bindgesture pinch:inward+up move up
+bindgesture pinch:inward+down move down
+bindgesture pinch:inward+left move left
+bindgesture pinch:inward+right move right
+
 # Move window to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
@@ -98,10 +108,17 @@ bindsym $mod+control+$down resize shrink height 30px
 bindsym $mod+control+$up resize grow height 30px
 bindsym $mod+control+$right resize grow width 30px
 
-# Borders & gaps
-default_border pixel 2
-default_floating_border pixel 2
+# Window gaps
 gaps inner 6
+gaps horizontal -2
+
+# Titlebars & borders
+font Inter Regular 10
+default_border pixel 2
+default_floating_border normal 2
+titlebar_border_thickness 2
+titlebar_padding 8 6
+
 
 # Volume
 set $volume_change_step 3
@@ -125,7 +142,7 @@ bindsym $mod+e exec brightnessctl set '$brightness_change_step'%+
 bindsym $mod+y exec thunar
 bindsym $mod+x exec flatpak run org.mozilla.firefox
 bindsym $mod+g exec flatpak run com.vscodium.codium
-bindsym $mod+Return exec ghostty
+bindsym $mod+Return exec foot
 bindsym $mod+a exec fuzzel
 
 # Power
@@ -137,11 +154,8 @@ bindsym $mod+o exec systemctl suspend
 bindsym $mod+b exec swaymsg output eDP-1 power toggle
 
 # Colors
-#                           border      background     text        indicator     child_border
-client.focused            #e35c19   #285577      #ffffff   #e35c19     #e35c19
-client.focused_inactive   #e35c19   #285577      #ffffff   #e35c19     #e35c19
-client.unfocused          #686868   #222222      #888888   #686868     #686868
-
-# Startup
-exec swayidle
-bar swaybar_command waybar
+#                           border      background    text        indicator    child_border
+client.focused            #e35c19   #202225     #ffffff   #e35c19    #e35c19
+client.focused_inactive   #686868   #202225     #7e7e7e   #686868    #686868
+client.unfocused          #686868   #202225     #7e7e7e   #686868    #686868
+client.urgent             #686868   #202225     #7e7e7e   #686868    #686868
