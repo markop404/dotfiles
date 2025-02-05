@@ -6,10 +6,10 @@ include /etc/sway/config.d/*
 # Modifier keys
 set $mod Mod4
 
-set $left left
-set $down down
-set $up up
-set $right right
+set $left h
+set $down j
+set $up k
+set $right l
 
 # Displays
 output HDMI-A-1 {
@@ -89,7 +89,7 @@ bindsym $mod+Control+9 move container to workspace number 9, workspace number 9
 bindsym $mod+Control+0 move container to workspace number 10, workspace number 10
 
 # Next Tile
-bindsym $mod+h splith
+bindsym $mod+Shift+v splith
 bindsym $mod+v splitv
 
 # Modes
