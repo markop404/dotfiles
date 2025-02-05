@@ -64,11 +64,6 @@ bindsym $mod+0 workspace number 10
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
 
-bindgesture pinch:inward+up move up
-bindgesture pinch:inward+down move down
-bindgesture pinch:inward+left move left
-bindgesture pinch:inward+right move right
-
 # Move window to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
@@ -103,14 +98,10 @@ bindsym $mod+t floating toggle
 bindsym $mod+Shift+t focus mode_toggle
 
 # Resize
-bindsym $mod+control+$left resize shrink width 30px
-bindsym $mod+control+$down resize shrink height 30px
-bindsym $mod+control+$up resize grow height 30px
-bindsym $mod+control+$right resize grow width 30px
-
-# Window gaps
-gaps inner 6
-gaps horizontal -2
+bindsym $mod+control+$left resize shrink width 50px
+bindsym $mod+control+$down resize shrink height 50px
+bindsym $mod+control+$up resize grow height 50px
+bindsym $mod+control+$right resize grow width 50px
 
 # Titlebars & borders
 font Inter Regular 10
@@ -155,6 +146,6 @@ bindsym $mod+b exec swaymsg output eDP-1 power toggle
 # Colors
 #                           border      background    text        indicator    child_border
 client.focused            #e35c19   #202225     #ffffff   #e35c19    #e35c19
-client.focused_inactive   #686868   #202225     #7e7e7e   #686868    #686868
-client.unfocused          #686868   #202225     #7e7e7e   #686868    #686868
-client.urgent             #686868   #202225     #7e7e7e   #686868    #686868
+client.focused_inactive   #686868   #202225     #969696   #686868    #686868
+client.unfocused          #686868   #202225     #969696   #686868    #686868
+client.urgent             #686868   #202225     #969696   #686868    #686868
