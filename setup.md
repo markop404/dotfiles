@@ -12,7 +12,7 @@ sudo pacman -S curl git starship btop android-tools
 ```
 # 2. Install flatpak & xdg frameworks
 ```bash
-sudo pacman -S flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-user-dirs
+sudo pacman -S flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-user-dirs gnome-keyring
 ```
 # 3. Install distrobox
 ```bash
