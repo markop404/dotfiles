@@ -1,6 +1,6 @@
 ```bash
 git clone https://github.com/markop404/dotfiles
-cp -r ./dotfiles ~/
+cp -r ./dotfiles/home/* ~/
 ```
 # 0. Enable networking
 ```bash
@@ -12,7 +12,7 @@ sudo pacman -S curl git starship btop android-tools
 ```
 # 2. Install flatpak & xdg frameworks
 ```bash
-sudo pacman -S flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-user-dirs gnome-keyring
+sudo pacman -S flatpak xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-user-dirs
 ```
 # 3. Install distrobox
 ```bash
