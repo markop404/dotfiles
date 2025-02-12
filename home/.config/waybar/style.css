@@ -28,12 +28,8 @@ button.focused {
 }
 
 #network,
-#bluetooth,
 #clock,
-#language,
 #battery,
-#power-profiles-daemon,
-#idle_inhibitor,
 #backlight,
 #wireplumber {
     padding: 0 20px;
